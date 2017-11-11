@@ -15,12 +15,12 @@ class m171111_115120_create_post_table extends Migration
         $this->createTable('post', [
             'id' => $this->primaryKey(),
             'title' => $this->string(),
-            'keyword' => $this->string(),
-            'description' => $this->string(),
+            'keyword' => $this->text(),
+            'description' => $this->text(),
             'name' => $this->string()->notNull(),
             'body' => $this->text()->notNull(),
             'slug' => $this->string()->notNull(),
-            'category_id' => $this->integer(),
+            'category_id' => $this->integer()->notNull(),
         ]);
     }
 
