@@ -50,14 +50,8 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'all' => 'site/all',
-//                '<action:\w+>' => 'site/<action>',
-
                 '<slug:[\w\-]+>' => 'site/category',
                 '<category:[A-Za-z0-9 -_.]+>/<slug:[\w\-]+>'=>'site/detail',
-//                '<action:category:slug[-\w]+>' => 'site/category'
-//                'category/<slug:[\w\-]+>'=>'site/category',
-
-
 //                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],

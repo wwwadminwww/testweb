@@ -128,6 +128,12 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+
+    /**
+     * Displays all posts with pagination.
+     *
+     * @return string
+     */
     public function actionAll()
     {
         $posts = new ActiveDataProvider([
@@ -139,6 +145,15 @@ class SiteController extends Controller
         return $this->render('all', ['posts' => $posts]);
     }
 
+
+    /**
+     * Display one post and check category and post slug with DB slug values.
+     *
+     * @param $category
+     * @param $slug
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionDetail($category, $slug)
     {
         if (
@@ -153,6 +168,15 @@ class SiteController extends Controller
             }
         }
     }
+
+
+    /**
+     * Display all post for one category and check type of category and check slug for category in DB
+     *
+     * @param $slug
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionCategory($slug)
     {
         if (($model = Category::findOne(['slug' => $slug])) !== null ) {
