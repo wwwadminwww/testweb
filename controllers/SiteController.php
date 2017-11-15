@@ -166,6 +166,8 @@ class SiteController extends Controller
             } else {
                 throw new NotFoundHttpException();
             }
+        }else{
+            throw new NotFoundHttpException();
         }
     }
 
@@ -185,6 +187,8 @@ class SiteController extends Controller
             } else {
                 throw new NotFoundHttpException();
             }
+        }else{
+            throw new NotFoundHttpException();
         }
     }
 }

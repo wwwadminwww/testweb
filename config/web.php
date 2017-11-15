@@ -49,11 +49,12 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '' => 'site/index',
-                'all' => 'site/all',
+                'site/index' => 'site/index',
+                '<action:(all|about|contact|login|index)>' => 'site/<action>',
                 '<slug:[\w\-]+>' => 'site/category',
                 '<category:[A-Za-z0-9 -_.]+>/<slug:[\w\-]+>'=>'site/detail',
-//                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+
             ],
         ],
     ],
