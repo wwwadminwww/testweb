@@ -51,10 +51,11 @@ $config = [
                 '' => 'site/index',
                 'all' => 'site/all',
 //                '<action:\w+>' => 'site/<action>',
+                '<category:[A-Za-z0-9 -_.]+>/<slug:[\w\-]+>'=>'site/detail',
                 '<slug:[\w\-]+>' => 'site/category',
 //                '<action:category:slug[-\w]+>' => 'site/category'
 //                'category/<slug:[\w\-]+>'=>'site/category',
-                'detail/<slug:[\w\-]+>'=>'site/detail',
+
 
 //                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

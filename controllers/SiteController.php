@@ -139,7 +139,7 @@ class SiteController extends Controller
         return $this->render('all', ['posts' => $posts]);
     }
 
-    public function actionDetail($slug)
+    public function actionDetail($category, $slug)
     {
         if (($model = Post::find()->where(['slug' => $slug])->one()) !== null ){
             return $this->render('detail',['model' => $model]);
