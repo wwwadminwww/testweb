@@ -51,8 +51,9 @@ $config = [
                 '' => 'site/index',
                 'all' => 'site/all',
 //                '<action:\w+>' => 'site/<action>',
-                '<category:[A-Za-z0-9 -_.]+>/<slug:[\w\-]+>'=>'site/detail',
+
                 '<slug:[\w\-]+>' => 'site/category',
+                '<category:[A-Za-z0-9 -_.]+>/<slug:[\w\-]+>'=>'site/detail',
 //                '<action:category:slug[-\w]+>' => 'site/category'
 //                'category/<slug:[\w\-]+>'=>'site/category',
 

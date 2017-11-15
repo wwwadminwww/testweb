@@ -141,18 +141,26 @@ class SiteController extends Controller
 
     public function actionDetail($category, $slug)
     {
-        if (($model = Post::find()->where(['slug' => $slug])->one()) !== null ){
-            return $this->render('detail',['model' => $model]);
-        }else{
-            throw new NotFoundHttpException();
+        if (
+            (($model = Post::find()->where(['slug' => $slug])->one()) !== null) &&
+            ((($category_slug = Category::find()->where(['slug' => $category])->one()) !== null))
+        ) {
+            if (($slug === $model->slug) && ($category === $category_slug->slug)) {
+                return $this->render('detail', ['model' => $model]);
+
+            } else {
+                throw new NotFoundHttpException();
+            }
         }
     }
     public function actionCategory($slug)
     {
-        if (($model = Category::findOne(['slug' => $slug])) !== null ){
-            return $this->render('category', ['model' => $model]);
-        }else{
-            throw new NotFoundHttpException();
+        if (($model = Category::findOne(['slug' => $slug])) !== null ) {
+            if (($slug === $model->slug) && ($model->type === 1)) {
+                return $this->render('category', ['model' => $model]);
+            } else {
+                throw new NotFoundHttpException();
+            }
         }
     }
 }
