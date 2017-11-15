@@ -2,9 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Category;
+use app\models\Post;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -122,5 +126,33 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionAll()
+    {
+        $posts = new ActiveDataProvider([
+            'query' => Post::find()->orderBy('id', SORT_DESC),
+            'pagination' => [
+                'pageSize' => 2,
+            ],
+        ]);
+        return $this->render('all', ['posts' => $posts]);
+    }
+
+    public function actionDetail($slug)
+    {
+        if (($model = Post::find()->where(['slug' => $slug])->one()) !== null ){
+            return $this->render('detail',['model' => $model]);
+        }else{
+            throw new NotFoundHttpException();
+        }
+    }
+    public function actionCategory($slug)
+    {
+        if (($model = Category::findOne(['slug' => $slug])) !== null ){
+            return $this->render('category', ['model' => $model]);
+        }else{
+            throw new NotFoundHttpException();
+        }
     }
 }
