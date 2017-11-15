@@ -2,8 +2,11 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Test Task Web-systems.solutions';
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'main, head, page, posts']);
+$this->registerMetaTag(['name' => 'description', 'content' => 'it is main page of this site']);
 ?>
+<h2 style="text-align: center;">Open 'All' in menu and you can see all posts!!!</h2>
 <div class="site-index">
 
     <div class="jumbotron">
