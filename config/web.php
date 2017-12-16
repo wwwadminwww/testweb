@@ -49,6 +49,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '' => 'site/index',
+                'test' => 'site/test',
                 'api-test' => 'site/api-test',
                 'site/index' => 'site/index',
                 '<action:(all|about|contact|login|index)>' => 'site/<action>',
