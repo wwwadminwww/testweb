@@ -13,6 +13,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\httpclient\Client;
 
 class SiteController extends Controller
 {
@@ -190,5 +191,24 @@ class SiteController extends Controller
         }else{
             throw new NotFoundHttpException();
         }
+    }
+
+    public function actionApiTest()
+    {
+        $unisender_base_url = 'https://api.unisender.com/ru/api/';
+        $api_method = 'getLists';
+        $client = new Client(['baseUrl' => $unisender_base_url]);
+        $response = $client->createRequest()
+            ->setMethod('get')
+            ->setUrl($api_method)
+            ->setData(['format' => 'json', 'api_key' => '1234567890abcdef'])
+            ->send();
+        if ($response->isOk){
+            $response = json_decode($response->content);
+            return $this->render('api-test', ['response' => $response]);
+        }else{
+            return $this->render('api-test', ['response' => $response->content]);
+        }
+
     }
 }
